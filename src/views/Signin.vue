@@ -27,6 +27,7 @@
         </div>
         <button class="btn_signin">Sign in</button>
       </form>
+      <div class="forget_password">Forget your password?</div>
     </div>
   </div>
 </template>
@@ -37,17 +38,18 @@
 .view.entry.signin {
   width: 70%;
   margin: 0 auto;
-  padding: 70px 0 0 0;
+  padding: 100px 0 0 30px;
   > .welcome {
     color: color.$darker-black;
     font-size: 35px;
     font-weight: bolder;
+    margin-top: 20px;
   }
 
   > .hint {
     font-size: 14px;
     color: color.$text-black-0;
-
+    cursor: pointer;
     > span {
       color: #696cf1;
     }
@@ -56,9 +58,9 @@
   > .form {
     width: 100%;
     > form {
-      margin-top: 20px;
+      margin-top: 30px;
       > .group {
-        width: 40%;
+        width: 80%;
         &:nth-child(2n) {
           margin-top: 10px;
         }
@@ -85,7 +87,7 @@
       > .prompt {
         margin-top: 4px;
         font-size: 12px;
-        width: 40%;
+        width: 80%;
 
         > .highlight {
           color: #696cf1;
@@ -93,7 +95,7 @@
       }
 
       > .remember_me {
-        margin-top: 20px;
+        margin-top: 30px;
         > span {
           font-size: 14px;
           margin-left: 6px;
@@ -103,7 +105,7 @@
       > .btn_signin {
         background-color: color.$main-green;
         padding: 8px 24px;
-        width: 40%;
+        width: 80%;
         outline: none;
         border-style: none;
         border-radius: 6px;
@@ -111,11 +113,21 @@
         cursor: pointer;
         transition: 0.3s ease-in-out;
         box-shadow: 0px 3px 6px color.$shadow-color;
+        color: color.$white-1;
         &:hover {
           box-shadow: 3px 3px 6px 0
             sasscolor.adjust(color.$ash-3, $lightness: -10%);
         }
       }
+    }
+    > .forget_password {
+      margin-top: 30px;
+      width: 80%;
+      text-align: center;
+      color: #696cf1;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
     }
   }
 }

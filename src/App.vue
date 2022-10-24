@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { defineAsyncComponent } from "vue";
+import { defineAsyncComponent, computed } from "vue";
+import { useRoute } from "vue-router";
 const UnloggedFrame = defineAsyncComponent({
   loader: () =>
     import(
@@ -8,11 +9,35 @@ const UnloggedFrame = defineAsyncComponent({
       "@/components/Frames/Unlogged.vue"
     ),
 });
+
+const AuthUnloggedFrame = defineAsyncComponent({
+  loader: () =>
+    import(
+      /* webpackMode: "lazy" */
+      /* webpackPrefetch: true */
+      "@/components/Frames/AuthUnlogged.vue"
+    ),
+});
+
+const route = useRoute();
+const authPages = ["login", "register", "forgot-password"];
+const isAuthPage = computed(() => {
+  if (route && route.name && typeof route.name === "string") {
+    return authPages.includes(route.name);
+  }
+
+  return false;
+});
+
+const Frame = computed(() => {
+  if (isAuthPage.value) return AuthUnloggedFrame;
+  return UnloggedFrame;
+});
 </script>
 
 <template>
   <div class="app class container">
-    <component :is="UnloggedFrame">
+    <component :is="Frame">
       <suspense>
         <template #default>
           <router-view />

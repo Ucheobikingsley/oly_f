@@ -53,7 +53,7 @@ const gotoHome = () => {
 };
 
 const signIn = () => {
-  router.push({ name: "signin" });
+  router.push({ name: "login" });
 };
 </script>
 <template>

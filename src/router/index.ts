@@ -24,8 +24,8 @@ const router = createRouter({
         ),
     },
     {
-      path: "/signin",
-      name: "signin",
+      path: "/login",
+      name: "login",
       component: () =>
         import(
           /* webpackMode: "lazy" */
