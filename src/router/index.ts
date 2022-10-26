@@ -33,6 +33,16 @@ const router = createRouter({
           "@/views/Signin.vue"
         ),
     },
+    {
+      path: "/pricing",
+      name: "pricing",
+      component: () =>
+        import(
+          /* webpackMode: "lazy" */
+          /* webpackPrefetch: true */
+          "@/views/Pricing.vue"
+        ),
+    },
     // {
     //   path: "/about",
     //   name: "about",
