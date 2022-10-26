@@ -20,8 +20,6 @@ watch(
   routeName,
   debounce(
     (value) => {
-      console.log("log", scrollDisease.value);
-      console.log(value);
       if (value === "disease") {
         if (scrollDisease.value) {
           scrollIntoView(scrollDisease.value as HTMLElement, {
