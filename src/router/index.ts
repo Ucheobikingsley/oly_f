@@ -43,6 +43,36 @@ const router = createRouter({
           "@/views/Pricing.vue"
         ),
     },
+    {
+      path: "/disease",
+      name: "disease",
+      component: () =>
+        import(
+          /* webpackMode: "lazy" */
+          /* webpackPrefetch: true */
+          "@/views/Home.vue"
+        ),
+    },
+    {
+      path: "/therapists",
+      name: "therapists",
+      component: () =>
+        import(
+          /* webpackMode: "lazy" */
+          /* webpackPrefetch: true */
+          "@/views/Home.vue"
+        ),
+    },
+    {
+      path: "/therapies",
+      name: "therapies",
+      component: () =>
+        import(
+          /* webpackMode: "lazy" */
+          /* webpackPrefetch: true */
+          "@/views/Home.vue"
+        ),
+    },
     // {
     //   path: "/about",
     //   name: "about",

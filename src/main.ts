@@ -20,6 +20,7 @@ import "devextreme/dist/css/dx.light.css";
 const app = createApp(App);
 // eslint-disable-next-line vue/multi-word-component-names
 app.component("Loader", Loader);
+
 app.component("vue3-star-ratings", vue3StarRatings);
 app.component("font-awesome-icon", FontAwesomeIcon);
 app.use(router);

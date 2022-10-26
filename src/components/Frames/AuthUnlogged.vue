@@ -53,6 +53,9 @@ const gotoHome = () => {
 const signIn = () => {
   router.push({ name: "login" });
 };
+const goTopricingPage = () => {
+  router.push({ name: "pricing" });
+};
 </script>
 <template>
   <div class="component entry authunlogged">
@@ -95,7 +98,12 @@ const signIn = () => {
             How it works
           </div>
           <div id="faq" :style="{ cursor: 'pointer' }" class="faq">FAQ</div>
-          <div id="pricing" :style="{ cursor: 'pointer' }" class="pricing">
+          <div
+            id="pricing"
+            :style="{ cursor: 'pointer' }"
+            @click="goTopricingPage"
+            class="pricing"
+          >
             pricing
           </div>
           <div id="contact" :style="{ cursor: 'pointer' }" class="contact">

@@ -37,7 +37,7 @@
               elemento non può vivere senza l’altro. Concetto ancestrale che ci
               permette di dare un valore simbolico alla nostra esistenza.
             </p>
-            <p class="price gold">€ 0.00</p>
+            <p class="price gold">€ 100.00</p>
             <button class="btn">Subscribe now</button>
           </div>
           <div class="pricing">
@@ -49,7 +49,7 @@
               elemento non può vivere senza l’altro. Concetto ancestrale che ci
               permette di dare un valore simbolico alla nostra esistenza.
             </p>
-            <p class="price platinum">€ 0.00</p>
+            <p class="price platinum">€ 300.00</p>
             <button class="btn">Subscribe now</button>
           </div>
         </div>
@@ -79,7 +79,7 @@
               elemento non può vivere senza l’altro. Concetto ancestrale che ci
               permette di dare un valore simbolico alla nostra esistenza.
             </p>
-            <p class="price gold">€ 0.00</p>
+            <p class="price gold">€ 100.00</p>
             <button class="btn">Subscribe now</button>
           </div>
           <div class="pricing">
@@ -91,7 +91,7 @@
               elemento non può vivere senza l’altro. Concetto ancestrale che ci
               permette di dare un valore simbolico alla nostra esistenza.
             </p>
-            <p class="price platinum">€ 0.00</p>
+            <p class="price platinum">€ 300.00</p>
             <button class="btn">Subscribe now</button>
           </div>
         </div>
@@ -215,11 +215,11 @@
             font-size: 30px;
             font-weight: bolder;
 
-            > .gold {
+            &.gold {
               color: color.$purple;
             }
 
-            > .platinum {
+            &.platinum {
               color: color.$main-green;
             }
           }

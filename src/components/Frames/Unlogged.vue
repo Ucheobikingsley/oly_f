@@ -55,15 +55,29 @@ const gotoHome = () => {
 const signIn = () => {
   router.push({ name: "login" });
 };
+
+const goTopricingPage = () => {
+  router.push({ name: "pricing" });
+};
+const goToDisease = () => {
+  router.push({ name: "disease" });
+};
+
+const goToTherapists = () => {
+  router.push({ name: "therapists" });
+};
+const goToTherapies = () => {
+  router.push({ name: "therapies" });
+};
 </script>
 <template>
   <div class="component entry unlogged">
     <header class="header">
       <ul class="header-list">
         <li @click.stop="gotoHome"><logo /></li>
-        <li>Disease</li>
-        <li>Therapists</li>
-        <li>Therapies</li>
+        <li @click.stop="goToDisease">Disease</li>
+        <li @click.stop="goToTherapists">Therapists</li>
+        <li @click.stop="goToTherapies">Therapies</li>
         <li>Providers items</li>
       </ul>
 
@@ -97,7 +111,12 @@ const signIn = () => {
             How it works
           </div>
           <div id="faq" :style="{ cursor: 'pointer' }" class="faq">FAQ</div>
-          <div id="pricing" :style="{ cursor: 'pointer' }" class="pricing">
+          <div
+            id="pricing"
+            :style="{ cursor: 'pointer' }"
+            @click.stop="goTopricingPage"
+            class="pricing"
+          >
             pricing
           </div>
           <div id="contact" :style="{ cursor: 'pointer' }" class="contact">

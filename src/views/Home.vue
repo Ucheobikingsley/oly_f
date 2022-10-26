@@ -1,13 +1,76 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, watch, computed } from "vue";
+import { templateRef } from "@vueuse/core";
+import { useRoute } from "vue-router";
 import therapyCard from "@/components/Card/card.vue";
 import therapistCard from "@/components/Card/therapistCard.vue";
 import solidEye from "@/components/icons/solidEye.vue";
 import solidEyeWhite from "@/components/icons/solidEyeWhite.vue";
+// import scroller from "vue-scrollto";
+import { debounce, get, pick } from "lodash-es";
+import scrollIntoView from "scroll-into-view";
+
+const scrollDisease = templateRef("scrollDisease");
+const therapistsEl = templateRef("therapistsEl");
+const therapiesEl = templateRef("therapiesEl");
+const route = useRoute();
+const routeName = computed(() => route.name);
+const container = templateRef("container");
+watch(
+  routeName,
+  debounce(
+    (value) => {
+      console.log("log", scrollDisease.value);
+      console.log(value);
+      if (value === "disease") {
+        if (scrollDisease.value) {
+          scrollIntoView(scrollDisease.value as HTMLElement, {
+            time: 500,
+            align: {
+              top: 0.5,
+              topOffset: 150,
+            },
+
+            cancellable: false,
+          });
+        }
+      } else if (value === "therapists") {
+        if (therapistsEl.value) {
+          scrollIntoView(therapistsEl.value as HTMLElement, {
+            time: 500,
+            align: {
+              top: 0.1,
+              topOffset: 150,
+            },
+
+            cancellable: false,
+          });
+        }
+      } else if (value === "therapies") {
+        if (therapiesEl.value) {
+          scrollIntoView(therapiesEl.value as HTMLElement, {
+            time: 500,
+            align: {
+              top: 0.1,
+              topOffset: 150,
+            },
+
+            cancellable: false,
+          });
+        }
+      }
+    },
+    200,
+    {
+      maxWait: 500,
+    }
+  )
+);
+
 const activeClass = ref<"air" | "water" | "earth" | "fire">("air");
 </script>
 <template>
-  <div class="view entry home">
+  <div ref="container" class="view entry home">
     <div class="hero_section">
       <div class="image_container">
         <img src="@/assets/images/pngs/sfondo.png" alt="" />
@@ -20,7 +83,11 @@ const activeClass = ref<"air" | "water" | "earth" | "fire">("air");
         On OLY
       </div>
     </div>
-    <div class="uploaded_diseases_section">
+    <div
+      ref="scrollDisease"
+      id="scrollDisease"
+      class="uploaded_diseases_section"
+    >
       <div class="section">
         <p class="title">Last Uploaded Diseases</p>
         <div class="action_button">
@@ -142,7 +209,7 @@ const activeClass = ref<"air" | "water" | "earth" | "fire">("air");
         <solidEyeWhite class="icon" /> <span>See more</span>
       </button>
     </div>
-    <div class="therapists">
+    <div ref="therapistsEl" class="therapists">
       <p class="title">Recent Therapists</p>
       <div class="therapists-items">
         <therapistCard />
@@ -154,7 +221,7 @@ const activeClass = ref<"air" | "water" | "earth" | "fire">("air");
     <div class="hui_image">
       <img src="@/assets/images/jpeg/hui.jpeg" alt="" />
     </div>
-    <div class="uploaded_diseases_section recent_therapies">
+    <div ref="therapiesEl" class="uploaded_diseases_section recent_therapies">
       <div class="section">
         <p class="title">Recent Therapies</p>
 
@@ -295,6 +362,7 @@ const activeClass = ref<"air" | "water" | "earth" | "fire">("air");
     }
   }
   > .uploaded_diseases_section {
+    overflow: hidden;
     width: 100%;
     > .section {
       width: 100%;
